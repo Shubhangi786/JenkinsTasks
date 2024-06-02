@@ -1,0 +1,25 @@
+node {
+    stage('Checkout') {
+        checkout scm
+    }
+
+    stage('Build') {
+        dir('\\jenkinstask') {
+            bat 'mvn clean install'
+        }
+    }
+
+    stage('Test') {
+        dir('\\jenkinstask') {
+            bat 'mvn test'
+        }
+    }
+
+    stage('Reporting') {
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, reportDir: '\\jenkinstask\\reports', reportFiles: '/*.html', reportName: 'Extent Report', reportTitles: '', useWrapperFileDirectly: true])
+    }
+
+    stage('Notify') {
+        emailext attachmentsPattern: 'C:\\Users\\shubhangimadhukar_sa\\.jenkins\\workspace\\JenkinsTask_Pipeline\\jenkinstask\\reports\\**/*.html', body: '', subject: "Jenkins-${JOB_NAME}-${BUILD_NUMBER}", to: 'shubhangimsable@gmail.com'
+    }
+}
