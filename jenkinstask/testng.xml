@@ -7,7 +7,7 @@
   <test thread-count="5" parallel="methods" name="Test">
 	<groups>
 		<run>
-			<exclude name="smoke"></exclude>
+			<include name="smoke"></include>
 			<include name="negativeTests"></include>
 		</run>
 	</groups>
