@@ -1,9 +1,12 @@
 package tasks;
 
 
+import java.io.File;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -16,6 +19,16 @@ public class CalculatorTest {
    
 	Calculator calculator = new Calculator();
 
+	@BeforeSuite
+	public void cleanReportDirectory(){
+		System.out.println(System.getProperty("user.dir"));
+    	File index = new File(System.getProperty("user.dir")+"\\reports");
+    	String[]entries = index.list();
+    	for(String s: entries){
+    	    File currentFile = new File(index.getPath(),s);
+    	    currentFile.delete();
+    	}
+	}
 	
 	@BeforeMethod
 	public void beforeMethod() {
