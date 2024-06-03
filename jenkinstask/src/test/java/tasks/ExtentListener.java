@@ -1,8 +1,10 @@
 package tasks;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
+import org.apache.commons.io.FileUtils;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -17,24 +19,14 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 public class ExtentListener implements ITestListener{
 
 	
-	static Date d = new Date();
-    static String fileName = "ExtentReport_" + d.toString().replace(":", "_").replace(" ", "_") + ".html";
+//	static Date d = new Date();
+    static String fileName = "ExtentReport_Test.html";
  
     static ExtentReports extent = ExtentManager.createInstance(System.getProperty("user.dir")+"\\reports\\"+fileName);
      
     public static ThreadLocal<ExtentTest> testReport = new ThreadLocal<ExtentTest>();
      
- 
-    public static void main(String [] args) {
-    	
-    	System.out.println(System.getProperty("user.dir"));
-    	File index = new File(System.getProperty("user.dir")+"\\reports");
-    	String[]entries = index.list();
-    	for(String s: entries){
-    	    File currentFile = new File(index.getPath(),s);
-    	    currentFile.delete();
-    	}
-    }
+
     public void onTestStart(ITestResult result) {
      
         ExtentTest test = extent.createTest(result.getTestClass().getName()+"     @TestCase : "+result.getMethod().getMethodName());
@@ -58,7 +50,7 @@ public class ExtentListener implements ITestListener{
  
     }
     public void onFinish(ITestContext context) {
-    	 
+
         if (extent != null) {
             extent.flush();
         }
