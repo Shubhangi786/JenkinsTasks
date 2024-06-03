@@ -1,6 +1,6 @@
 package tasks;
 
-import java.util.Arrays;
+import java.io.File;
 import java.util.Date;
 
 import org.testng.ITestContext;
@@ -25,6 +25,16 @@ public class ExtentListener implements ITestListener{
     public static ThreadLocal<ExtentTest> testReport = new ThreadLocal<ExtentTest>();
      
  
+    public static void main(String [] args) {
+    	
+    	System.out.println(System.getProperty("user.dir"));
+    	File index = new File(System.getProperty("user.dir")+"\\reports");
+    	String[]entries = index.list();
+    	for(String s: entries){
+    	    File currentFile = new File(index.getPath(),s);
+    	    currentFile.delete();
+    	}
+    }
     public void onTestStart(ITestResult result) {
      
         ExtentTest test = extent.createTest(result.getTestClass().getName()+"     @TestCase : "+result.getMethod().getMethodName());
