@@ -18,17 +18,6 @@ import mainfiles.Calculator;
 public class CalculatorTest {
    
 	Calculator calculator = new Calculator();
-
-	@BeforeSuite
-	public void cleanReportDirectory(){
-		System.out.println(System.getProperty("user.dir"));
-    	File index = new File(System.getProperty("user.dir")+"\\reports");
-    	String[]entries = index.list();
-    	for(String s: entries){
-    	    File currentFile = new File(index.getPath(),s);
-    	    currentFile.delete();
-    	}
-	}
 	
 	@BeforeMethod
 	public void beforeMethod() {
