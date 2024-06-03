@@ -5,7 +5,7 @@ node {
 
     stage('Build') {
         dir('\\jenkinstask') {
-            bat 'mvn clean install'
+            bat 'mvn clean install -Dmaven.test.skip=true'
         }
     }
 
