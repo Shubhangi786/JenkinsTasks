@@ -1,12 +1,9 @@
 package tasks;
 
 
-import java.io.File;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -16,17 +13,18 @@ import mainfiles.Calculator;
 
 
 public class CalculatorTest {
-   
+
 	Calculator calculator = new Calculator();
+
 	
 	@BeforeMethod
 	public void beforeMethod() {
-		System.out.println("Before Method........");
+		System.out.println("Before Method");
 	}
 	
 	@AfterMethod
 	public void afterMethod() {
-		System.out.println("After Method........");
+		System.out.println("After Method");
 	}
 	
 /*************** Positive Test Cases *************/
