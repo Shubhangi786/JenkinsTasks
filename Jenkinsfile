@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Notify'){
             steps{
-                emailext attachmentsPattern: 'C:\\Users\\shubhangimadhukar_sa\\.jenkins\\workspace\\JenkinsTask_Pipeline\\jenkinstask\\reports\\**/*.html', body: '', subject: 'Jenkins-${JOB_NAME}-${BUILD_NUMBER}', to: 'shubhangimsable@gmail.com'
+                emailext attachmentsPattern: 'C:\\Users\\shubhangimadhukar_sa\\.jenkins\\workspace\\JenkinsTask_Pipeline\\jenkinstask\\reports\\**/*.html', body: 'Please go to ${BUILD_URL} and verify the build', subject: 'Jenkins-${JOB_NAME}-${BUILD_NUMBER}', to: 'shubhangimsable@gmail.com'
             }
         }
     }
