@@ -15,7 +15,6 @@ public class CalculatorTest {
 
 	Calculator calculator = new Calculator();
 
-	
 	@BeforeMethod
 	public void beforeMethod() {
 		System.out.println("Before Method...");
